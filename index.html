@@ -5,222 +5,296 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nidhi Dattaprasad Shastri</title>
 <meta name="description" content="Personal website and project portfolio of Nidhi Dattaprasad Shastri.">
-<link rel="icon" href="https://github.com/NidhiDattaprasadShastri.png">
+<link rel="icon" href="profile.jpg">
+
+<!-- Bootstrap (layout, buttons, badges, dropdown) and Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #F4F7F7;
-    --surface: #FFFFFF;
-    --ink: #17252B;
-    --muted: #5A6B71;
-    --accent: #0F6E6E;
-    --accent-soft: #DDEFEC;
-    --line: #D6E0E0;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #10191C;
-      --surface: #172327;
-      --ink: #E6EEEE;
-      --muted: #9AB0B3;
-      --accent: #5CC4B8;
-      --accent-soft: #1D3433;
-      --line: #27393D;
-    }
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font: 400 1.0625rem/1.65 "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  }
-  a { color: var(--accent); text-underline-offset: 3px; }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-  h1, h2, h3 { font-family: "Sora", "Segoe UI", system-ui, sans-serif; line-height: 1.2; margin: 0; }
-
-  /* Top navigation */
-  header {
-    position: sticky; top: 0; z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav {
-    max-width: 1080px; margin: 0 auto; padding: 0.9rem 1.5rem;
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  }
-  .nav .brand { font-family: "Sora", sans-serif; font-weight: 600; color: var(--ink); text-decoration: none; }
-  .nav ul { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; flex-wrap: wrap; }
-  .nav ul a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-  .nav ul a:hover { color: var(--accent); }
-
-  /* Page layout: profile column + content column */
-  .page {
-    max-width: 1080px; margin: 0 auto; padding: 3rem 1.5rem 4rem;
-    display: grid; grid-template-columns: 280px 1fr; gap: 3.5rem;
-  }
-  .profile { position: sticky; top: 100px; align-self: start; }
-  .profile img {
-    width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
-    border: 4px solid var(--accent-soft); display: block;
-  }
-  .profile h1 { font-size: 1.75rem; margin-top: 1.25rem; letter-spacing: -0.01em; }
-  .profile .role { color: var(--muted); margin: 0.4rem 0 1.25rem; }
-  .links { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
-  .links a { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
-  .links a:hover { color: var(--accent); }
-  .links svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
-
-  main section { padding-bottom: 2.75rem; margin-bottom: 2.75rem; border-bottom: 1px solid var(--line); }
-  main section:last-child { border-bottom: none; }
-  main h2 { font-size: 1.4rem; margin-bottom: 1.1rem; }
-  main p { margin: 0 0 1rem; max-width: 68ch; }
-
-  /* Education timeline */
-  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--accent-soft); }
-  .timeline li { position: relative; margin-bottom: 1.5rem; }
-  .timeline li::before {
-    content: ""; position: absolute; left: calc(-1.25rem - 6px); top: 0.5rem;
-    width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
-  }
-  .timeline h3 { font-size: 1.05rem; }
-  .timeline .meta { color: var(--muted); font-size: 0.95rem; }
-
-  /* Projects */
-  .projects { display: grid; gap: 1rem; }
-  .project {
-    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
-    border-radius: 6px; padding: 1.1rem 1.25rem;
-  }
-  .project h3 { font-size: 1.05rem; }
-  .project p { margin: 0.35rem 0 0.6rem; color: var(--muted); }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
-  .tags span { background: var(--accent-soft); color: var(--ink); font-size: 0.85rem; padding: 0.1rem 0.6rem; border-radius: 999px; }
-  .project a { font-weight: 600; font-size: 0.95rem; }
-
-  .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skills span { border: 1px solid var(--line); background: var(--surface); padding: 0.3rem 0.8rem; border-radius: 999px; }
-
-  footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 2rem 1.5rem; border-top: 1px solid var(--line); }
-
-  @media (max-width: 820px) {
-    .page { grid-template-columns: 1fr; gap: 2rem; padding-top: 2rem; }
-    .profile { position: static; text-align: center; }
-    .profile img { margin: 0 auto; width: 140px; height: 140px; }
-    .links { justify-items: center; }
-  }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-</style>
+<!-- Your own styles (loaded last so they win over Bootstrap) -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <nav class="nav" aria-label="Main">
-    <a class="brand" href="#">Nidhi Shastri</a>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="desktop" id="desktop">
 
-<div class="page">
+  <!-- ================= NAME CARD =================
+       Always visible on the desktop. Windows open on top of it. -->
+  <div class="name-card">
+    <div class="d-flex align-items-center gap-3 mb-3">
+      <img class="name-card-photo" src="profile.jpg" alt="Photo of Nidhi Dattaprasad Shastri">
+      <div>
+        <h1 class="name-card-name">Nidhi Dattaprasad Shastri</h1>
+        <p class="name-card-title">Software engineer, backend and cloud</p>
+      </div>
+    </div>
+    <p class="name-card-fact"><i class="bi bi-mortarboard"></i> MS Software System Engineering, Northeastern University</p>
+    <p class="name-card-fact"><i class="bi bi-building"></i> 3 years of experience at Capgemini for Mercedes R&amp;D</p>
+    <p class="name-card-intro">Let's connect! I'm always happy to chat about projects, research, new opportunities or how I can contribute to your company or project.</p>
 
-  <!-- ===== LEFT COLUMN: PROFILE ===== -->
-  <aside class="profile">
-    <!-- To use your own photo: upload profile.jpg to the repo and change src to "profile.jpg" -->
-    <img src="https://github.com/NidhiDattaprasadShastri.png" alt="Photo of Nidhi Dattaprasad Shastri">
-    <h1>Nidhi Dattaprasad Shastri</h1>
-    <!-- EDIT: your current role -->
-    <p class="role">[Graduate Student in ___ at ___ University]</p>
-    <ul class="links">
-      <li><a href="mailto:your.email@example.com"> <!-- EDIT: your email -->
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>Email</a></li>
-      <li><a href="https://github.com/NidhiDattaprasadShastri">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/your-profile"> <!-- EDIT: your LinkedIn URL -->
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7S12.5 12.6 12.5 14V19h-3V9h2.9v1.4c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z"/></svg>LinkedIn</a></li>
-      <li><a href="resume.pdf"> <!-- Upload resume.pdf to the repo to make this work -->
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm-1 7V3.5L18.5 9zM8 13h8v2H8zm0 4h8v2H8z"/></svg>Resume</a></li>
-    </ul>
-  </aside>
+    <!-- Sections of the site: each button opens its window -->
+    <div class="card-sections">
+      <button class="section-btn" data-open="about"><i class="bi bi-person-badge"></i>About me</button>
+      <button class="section-btn" data-open="experience"><i class="bi bi-briefcase"></i>Experience</button>
+      <button class="section-btn" data-open="projects"><i class="bi bi-github"></i>GitHub Projects</button>
+      <button class="section-btn" data-open="education"><i class="bi bi-mortarboard"></i>Education</button>
+      <button class="section-btn" data-open="skills"><i class="bi bi-cpu"></i>Skills</button>
+    </div>
 
-  <!-- ===== RIGHT COLUMN: CONTENT ===== -->
-  <main>
+    <!-- Contact links: three equal buttons -->
+    <div class="card-actions">
+      <button class="btn btn-outline-accent btn-sm" data-open="resume"><i class="bi bi-file-earmark-person"></i> Resume</button>
+      <a class="btn btn-outline-accent btn-sm" href="https://www.linkedin.com/in/nidhi-d-shastri/" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i> LinkedIn</a>
+      <div class="dropdown">
+        <button class="btn btn-outline-accent btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-envelope"></i> Email</button>
+        <ul class="dropdown-menu email-menu">
+          <li><a class="dropdown-item" href="mailto:nidhidshastri@gmail.com"><i class="bi bi-envelope"></i>nidhidshastri@gmail.com</a></li>
+          <li><a class="dropdown-item" href="mailto:dattaprasadshastri.n@northeastern.edu"><i class="bi bi-mortarboard"></i>dattaprasadshastri.n@northeastern.edu</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-    <section id="about">
-      <h2>About me</h2>
-      <!-- EDIT: write 2–4 sentences about yourself -->
-      <p>Hello, I'm Nidhi. [Write a short introduction: what you study or work on, what kinds of problems you enjoy solving, and what you're looking for next, such as internships or full-time roles.]</p>
-      <p>My interests include [artificial intelligence, cloud computing, software engineering, ___].</p>
-    </section>
+  <!-- ================= WINDOWS =================
+       To edit content, change the text inside each window-body. -->
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul class="timeline">
-        <!-- EDIT: replace with your real degrees, most recent first -->
+  <!-- ABOUT -->
+  <section class="window" id="about" data-title="About me" data-icon="bi-person-badge" hidden>
+    <div class="window-body">
+      <div class="row g-4 align-items-center">
+        <div class="col-sm-4 text-center">
+          <!-- To use your own photo: upload profile.jpg and change src to "profile.jpg" -->
+          <img class="avatar" src="profile.jpg" alt="Photo of Nidhi Dattaprasad Shastri">
+        </div>
+        <div class="col-sm-8">
+          <h1 class="name">Nidhi Dattaprasad Shastri</h1>
+          <p class="role">MS in Software System Engineering at Northeastern University, Boston</p>
+          <p>Hello, I'm Nidhi. I'm a software engineer with three years of experience at Capgemini, where I built data pipelines, full-stack applications (with Java on the backend) and CI/CD workflows for Mercedes Research and Development.</p>
+          <p>Today I'm focused on cloud computing, distributed systems and AI agent infrastructure. I'm open to software engineering, full-stack, cloud and AI roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="window window-wide" id="experience" data-title="Work experience" data-icon="bi-briefcase" hidden>
+    <div class="window-body">
+      <ol class="timeline">
         <li>
-          <h3>[University name] — [Degree, e.g. M.S. in Computer Science]</h3>
-          <div class="meta">[Start year – End year] · [City, Country]</div>
-          <p>Relevant coursework: Object-Oriented Programming, Artificial Intelligence, [___]</p>
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h3>Capgemini Technology Services</h3>
+            <span class="badge text-bg-light">Dec 2022 – Aug 2025</span>
+          </div>
+          <p class="meta">Client: Mercedes Research and Development · Bengaluru, India</p>
+
+          <h4 class="sub-role">Senior Analyst <span>Jan 2024 – Aug 2025</span></h4>
+          <ul>
+            <li>Optimized SQL queries on large Mercedes production datasets (MySQL, PostgreSQL) and added data-logging metrics to monitor data quality, speeding up issue detection.</li>
+            <li>Architected Java (Spring Boot) backend services exposing REST APIs with JSON payloads, working closely with DevOps on deployment and infrastructure.</li>
+            <li>Enhanced Mercedes Claims &amp; Returns functionality with Core Java and MySQL, improving transaction processing efficiency by about 20%.</li>
+            <li>Led code reviews, wrote technical documentation and mentored engineers on TypeScript and JavaScript codebases.</li>
+          </ul>
+
+          <h4 class="sub-role">Analyst <span>Dec 2022 – Jan 2024</span></h4>
+          <ul>
+            <li>Engineered and monitored data pipelines for large-scale Mercedes datasets across MySQL and PostgreSQL, tracking data flow and integrity.</li>
+            <li>Built real-time observability with Datadog dashboards and alerts, accelerating issue detection across high-volume datasets.</li>
+            <li>Integrated Apache Kafka into Java backend services for reliable, event-driven data flow between systems.</li>
+            <li>Maintained CI/CD pipelines with Jenkins and GitHub Actions, shortening build and release cycles by about 25%.</li>
+            <li>Deployed and scaled microservices on AWS with Kubernetes and Docker, reducing service disruptions by about 15%.</li>
+          </ul>
+          <div class="tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>AWS</span><span>Kubernetes</span><span>Docker</span><span>Datadog</span><span>Jenkins</span></div>
         </li>
         <li>
-          <h3>[University name] — [Degree, e.g. B.E. in ___]</h3>
-          <div class="meta">[Start year – End year] · [City, Country]</div>
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h3>Data Science Intern · LocalHost</h3>
+            <span class="badge text-bg-light">May 2021 – Jul 2021</span>
+          </div>
+          <p class="meta">Bengaluru, India</p>
+          <ul>
+            <li>Trained deep learning models with Keras and deployed them as REST APIs with Flask, reaching 92% accuracy in real-time facial analysis.</li>
+            <li>Optimized inference pipelines to cut latency by 15%, deploying models within a microservices architecture.</li>
+          </ul>
+          <div class="tags"><span>Python</span><span>Keras</span><span>Flask</span></div>
         </li>
-      </ul>
-    </section>
+        <li>
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h3>Volunteer · Make A Difference</h3>
+          </div>
+          <ul>
+            <li>Taught science and maths to under-privileged high school students.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects">
-        <!-- EDIT: improve each description; copy a block to add more projects -->
-        <article class="project">
-          <h3>Diplomatic Assistant using AI</h3>
-          <p>[Describe what it does, e.g. an AI assistant that helps with ___.]</p>
-          <div class="tags"><span>AI</span><span>[Tech]</span></div>
-          <a href="https://github.com/NidhiDattaprasadShastri/Diplomatic-Assistant-using-AI">View on GitHub</a>
-        </article>
-        <article class="project">
-          <h3>AI Project</h3>
-          <p>[Describe the problem it solves and the approach you used.]</p>
-          <div class="tags"><span>Java</span><span>AI</span></div>
-          <a href="https://github.com/NidhiDattaprasadShastri/AIProject">View on GitHub</a>
-        </article>
-        <article class="project">
-          <h3>Object-Oriented Programming (CSYE6200)</h3>
-          <p>Coursework and assignments in object-oriented design and programming. [Add a highlight.]</p>
-          <div class="tags"><span>Java</span><span>OOP</span></div>
-          <a href="https://github.com/NidhiDattaprasadShastri/CSYE6200">View on GitHub</a>
-        </article>
+  <!-- PROJECTS -->
+  <section class="window window-wide" id="projects" data-title="GitHub Projects" data-icon="bi-github" hidden>
+    <div class="window-body">
+      <div class="row g-3">
+        <!-- Copy a "col" block to add another project -->
+        <div class="col-md-6">
+          <article class="project h-100">
+            <h3><i class="bi bi-globe2"></i> Cross-Cultural Diplomatic Assistant</h3>
+            <p class="date">Dec 2025</p>
+            <p>A distributed AI assistant on a 2-node Akka Cluster with custom routing and actor communication, reaching 99.9% uptime. Its cultural intelligence system uses a profit-fear-power framework and 7 IDEA primitives, validated by 160+ tests.</p>
+            <div class="tags"><span>Akka Cluster</span><span>Java</span><span>AI agents</span></div>
+            <a class="btn btn-outline-accent btn-sm" href="https://github.com/NidhiDattaprasadShastri/Diplomatic-Assistant-using-AI" target="_blank" rel="noopener"><i class="bi bi-github"></i> View code</a>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="project h-100">
+            <h3><i class="bi bi-grid-3x3"></i> GridDeliveryEnv</h3>
+            <p class="date">May 2026 · Reinforcement learning and reward hacking</p>
+            <p>A stochastic, partially observable GridWorld in Python and NumPy with resource constraints. Agents were benchmarked across 600+ episodes, with a 17-test suite reproducing every result to floating-point precision.</p>
+            <div class="tags"><span>Python</span><span>NumPy</span><span>Reinforcement learning</span></div>
+            <!-- EDIT: change this link to the GridDeliveryEnv repository once it's on GitHub -->
+            <a class="btn btn-outline-accent btn-sm" href="https://github.com/NidhiDattaprasadShastri?tab=repositories" target="_blank" rel="noopener"><i class="bi bi-github"></i> View code</a>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="project h-100">
+            <h3><i class="bi bi-badge-ar"></i> AR and AI object placement</h3>
+            <p class="date">2022 · Best Paper Award, NCCT National Conference on Computing Technology</p>
+            <p>An augmented reality and AI based system for placing virtual objects in real environments, developed while volunteering with Make A Difference.</p>
+            <div class="tags"><span>Augmented reality</span><span>AI</span></div>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="project project-more h-100">
+            <h3><i class="bi bi-plus-square-dotted"></i> More on GitHub</h3>
+            <p>Coursework and experiments, including Object-Oriented Design (CSYE6200) in Java.</p>
+            <a class="btn btn-accent btn-sm" href="https://github.com/NidhiDattaprasadShastri?tab=repositories" target="_blank" rel="noopener"><i class="bi bi-github"></i> All repositories</a>
+          </article>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <!-- EDIT: list your real skills -->
-      <div class="skills">
-        <span>Java</span><span>Python</span><span>Object-oriented design</span>
-        <span>Machine learning</span><span>Git &amp; GitHub</span><span>[Cloud platform]</span>
+  <!-- EDUCATION -->
+  <section class="window window-wide" id="education" data-title="Education" data-icon="bi-mortarboard" hidden>
+    <div class="window-body">
+      <ol class="timeline">
+        <li>
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h3>Northeastern University</h3>
+            <span class="badge text-bg-light">Expected May 2027</span>
+          </div>
+          <p class="meta">MS, Software System Engineering · Boston, MA</p>
+
+          <h4 class="sub-role">Graduate coursework</h4>
+          <div class="courses">
+            <!-- Copy a course block to add another course -->
+            <article class="course">
+              <div class="course-head">
+                <span class="course-code">CSYE 7374</span>
+              </div>
+              <h5>Intro to AI Agent Infrastructure</h5>
+              <p>Building large language models from the ground up (tokenization, embeddings, attention, pretraining and fine-tuning), retrieval-augmented generation with vector and graph databases, and running AI agents as distributed, fault-tolerant systems on Akka Clusters with Spring AI.</p>
+              <div class="tags"><span>LLMs</span><span>RAG</span><span>Akka</span><span>Spring AI</span></div>
+            </article>
+
+            <article class="course">
+              <div class="course-head">
+                <span class="course-code">CSYE 6200</span>
+              </div>
+              <h5>Concepts of Object-Oriented Design</h5>
+              <p>Object-oriented design in Java: abstraction, inheritance, polymorphism and interfaces, design patterns such as Singleton and Factory, collections and generics, lambdas and streams, threads, network programming and Swing GUIs, ending in a team-built GUI application.</p>
+              <div class="tags"><span>Java</span><span>Design patterns</span><span>Multithreading</span></div>
+            </article>
+
+            <article class="course">
+              <div class="course-head">
+                <span class="course-code">CSYE 6225</span>
+              </div>
+              <h5>Network Structures and Cloud Computing</h5>
+              <p>Designing and deploying cloud-native applications on AWS: networking with VPCs and Route 53, compute and storage with EC2, RDS and S3, infrastructure as code with Terraform, machine images with Packer, and automated CI/CD pipelines with GitHub Actions.</p>
+              <div class="tags"><span>AWS</span><span>Terraform</span><span>Packer</span><span>CI/CD</span></div>
+            </article>
+
+            <article class="course">
+              <div class="course-head">
+                <span class="course-code">CSYE 7380</span>
+              </div>
+              <h5>Theory and Practical Applications of AI Generative Modeling</h5>
+              <p>Generative models for text, images and structured data: GANs, variational autoencoders, transformers and BERT, LLM fine-tuning and prompt engineering, agentic AI, diffusion models and reinforcement learning, built in Python with PyTorch, TensorFlow, Hugging Face and LangChain.</p>
+              <div class="tags"><span>Generative AI</span><span>PyTorch</span><span>Diffusion models</span><span>LangChain</span></div>
+            </article>
+
+            <article class="course">
+              <div class="course-head">
+                <span class="course-code">INFO 6150</span>
+              </div>
+              <h5>Web Design and User Experience Engineering</h5>
+              <p>Front-end development and UX design: semantic HTML5, CSS3, Flexbox, Grid and SASS, responsive design with Bootstrap, JavaScript, the DOM and AJAX, jQuery, Node.js, Express and MongoDB, TypeScript, React with Redux, and Angular.</p>
+              <div class="tags"><span>React</span><span>TypeScript</span><span>Node.js</span><span>UX design</span></div>
+            </article>
+          </div>
+        </li>
+        <li>
+          <div class="d-flex flex-wrap justify-content-between gap-2">
+            <h3>RNS Institute of Technology</h3>
+            <span class="badge text-bg-light">Aug 2022</span>
+          </div>
+          <p class="meta">Bachelor of Engineering, Computer Science · Bengaluru, India</p>
+          <p>Coursework: Data Structures and Applications, Object-Oriented Concepts, Computer Networks and Security.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="window window-wide" id="skills" data-title="Skills" data-icon="bi-cpu" hidden>
+    <div class="window-body">
+      <h3 class="group">Languages</h3>
+      <div class="tags mb-3"><span>Java</span><span>Python</span><span>C/C++</span><span>JavaScript</span><span>TypeScript</span><span>HTML</span><span>CSS</span><span>SQL</span></div>
+      <h3 class="group">Databases</h3>
+      <div class="tags mb-3"><span>MySQL</span><span>PostgreSQL</span><span>NoSQL</span><span>Qdrant</span><span>Neo4j</span></div>
+      <h3 class="group">Cloud and DevOps</h3>
+      <div class="tags mb-3"><span>AWS</span><span>GCP</span><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>GitHub Actions</span><span>Jenkins</span><span>CI/CD</span><span>EC2</span><span>S3</span><span>RDS</span><span>Route 53</span><span>VPC</span><span>Linux</span><span>Git</span></div>
+      <h3 class="group">Data and messaging</h3>
+      <div class="tags mb-3"><span>Apache Kafka</span><span>Datadog</span><span>Data pipeline monitoring</span><span>Telemetry and metrics</span></div>
+      <h3 class="group">Tools and frameworks</h3>
+      <div class="tags"><span>Spring Boot</span><span>React</span><span>Node.js</span><span>Akka Cluster</span><span>HashiCorp Vault</span><span>HashiCorp Packer</span><span>REST APIs</span><span>Microservices</span><span>Swagger</span><span>Jira</span></div>
+    </div>
+  </section>
+
+  <!-- RESUME: shows NIDHI_SHASTRI_RESUME_.pdf inside a window. Replace NIDHI_SHASTRI_RESUME_.pdf to update it. -->
+  <section class="window window-wide window-tall" id="resume" data-title="Resume" data-icon="bi-file-earmark-person" hidden>
+    <div class="resume-toolbar">
+      <a class="btn btn-accent btn-sm" href="NIDHI_SHASTRI_RESUME_.pdf" download><i class="bi bi-download"></i> Download</a>
+      <a class="btn btn-outline-accent btn-sm" href="NIDHI_SHASTRI_RESUME_.pdf" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> Open in new tab</a>
+    </div>
+    <object class="resume-frame" data="NIDHI_SHASTRI_RESUME_.pdf#view=FitH" type="application/pdf" aria-label="Resume of Nidhi Dattaprasad Shastri">
+      <!-- Shown on devices that can't display PDFs inside a page (most phones) -->
+      <div class="window-body text-center">
+        <p>Your device can't show the PDF here.</p>
+        <a class="btn btn-accent btn-sm" href="NIDHI_SHASTRI_RESUME_.pdf" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> Open resume</a>
       </div>
-    </section>
+    </object>
+  </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>I'm happy to talk about projects, research, or opportunities. Email me at <a href="mailto:your.email@example.com">your.email@example.com</a> or connect with me on <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>.</p>
-    </section>
-
-  </main>
 </div>
 
-<footer>© <span id="year"></span> Nidhi Dattaprasad Shastri</footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<!-- ================= TASKBAR ================= -->
+<footer class="taskbar">
+  <div class="dropup">
+    <button class="start-btn" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="profile.jpg" alt=""> Nidhi
+    </button>
+    <ul class="dropdown-menu start-menu" id="startMenu"></ul>
+  </div>
+  <div class="task-list" id="taskList" aria-label="Open windows"></div>
+  <div class="clock" id="clock"></div>
+</footer>
+
+<!-- Bootstrap JavaScript (needed for the Start menu dropdown) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Your own JavaScript (opening, dragging, minimizing windows) -->
+<script src="script.js"></script>
 </body>
 </html>
